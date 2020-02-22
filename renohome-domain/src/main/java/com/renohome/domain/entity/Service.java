@@ -16,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 
 import com.renohome.domain.entity.enums.ServiceType;
 
@@ -40,6 +39,4 @@ public class Service extends AbstractEntity<Long> {
     @Column(name = "type", nullable = false, length = 200)
     private ServiceType type;
 
-    @Column(name = "budget", nullable = false)
-    private BigDecimal budget;
 }

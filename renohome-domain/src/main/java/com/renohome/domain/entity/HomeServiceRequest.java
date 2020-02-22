@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @Getter
@@ -26,7 +27,7 @@ import java.time.OffsetDateTime;
 @Builder
 @Entity
 @Table(name = "home_service_request")
-@ToString(callSuper = true, of = { "id" })
+@ToString(callSuper = true, of = { "id", "budget" })
 public class HomeServiceRequest extends AbstractEntity<Long> {
 
     @Id
@@ -49,4 +50,7 @@ public class HomeServiceRequest extends AbstractEntity<Long> {
     @ManyToOne(targetEntity = Contractor.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "contractor_id")
     private Contractor contractor;
+
+    @Column(name = "budget", nullable = false)
+    private BigDecimal budget;
 }

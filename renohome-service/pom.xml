@@ -12,5 +12,17 @@
 
     <artifactId>renohome-service</artifactId>
 
+    <dependencies>
+        <!-- RenoHome -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-dto</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -43,6 +45,10 @@ public class Contractor extends AbstractEntity<Long> {
 
     @Column(name = "cost", nullable = false, precision = 24, scale = 12)
     private BigDecimal cost;
+
+    @ManyToOne(targetEntity = Service.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "service_id")
+    private Service service;
 
     @OneToMany(mappedBy = "home", fetch = FetchType.LAZY)
     private List<HomeServiceRequest> homeServiceRequests;

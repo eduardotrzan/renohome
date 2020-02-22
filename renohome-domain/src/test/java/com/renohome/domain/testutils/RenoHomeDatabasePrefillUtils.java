@@ -211,7 +211,7 @@ public class RenoHomeDatabasePrefillUtils {
         ServiceType randomServiceType = serviceTypes.get(this.randomIntegerBetween(0, serviceTypes.size() -1));
         this.service = Service.builder()
                 .type(randomServiceType)
-                .budget(this.randomDecimalBetween(150, 1500))
+//                .budget(this.randomDecimalBetween(150, 1500))
                 .build();
         return this;
     }

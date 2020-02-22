@@ -11,19 +11,16 @@
         <insert tableName="service">
             <column name="version" value="1" />
             <column name="type" value="CHANGE_SINK" />
-            <column name="budget" value="400" />
         </insert>
 
         <insert tableName="service">
             <column name="version" value="1" />
             <column name="type" value="CHANGE_FLOORING" />
-            <column name="budget" value="1200" />
         </insert>
 
         <insert tableName="service">
             <column name="version" value="1" />
             <column name="type" value="PAINT" />
-            <column name="budget" value="150" />
         </insert>
 
 

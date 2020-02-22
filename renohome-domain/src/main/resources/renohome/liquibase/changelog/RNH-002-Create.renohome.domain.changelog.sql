@@ -20,6 +20,7 @@ CREATE TABLE "contractor" (
     "name"                       VARCHAR(200)                                                NOT NULL,
     "phone"                      VARCHAR(200)                                                NOT NULL,
     "cost"                       DECIMAL(24, 12)                                             NOT NULL,
+    "service_id"                 BIGINT                                                      NOT NULL,
 
     PRIMARY KEY ("id")
 );
@@ -81,7 +82,6 @@ CREATE TABLE "service" (
     "update_date"                 TIMESTAMP WITH TIME ZONE                                    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "version"                     BIGINT                                                      NOT NULL,
     "type"                        VARCHAR(200)                                                NOT NULL, -- CHANGE_SINK, CHANGE_FLOORING, PAINT ...
-    "budget"                      DECIMAL(24, 12)                                             NOT NULL,
 
     PRIMARY KEY ("id")
 );
@@ -115,6 +115,7 @@ CREATE TABLE "home_service_request" (
     "service_id"                  BIGINT                                                      NOT NULL,
     "contractor_id"               BIGINT                                                      NULL,
     "schedule_date"               TIMESTAMP WITH TIME ZONE                                    NOT NULL,
+    "budget"                      DECIMAL(24, 12)                                             NOT NULL,
 
     PRIMARY KEY ("id")
 );

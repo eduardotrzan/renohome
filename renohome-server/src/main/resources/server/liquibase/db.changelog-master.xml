@@ -6,17 +6,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet author="eduardotrzan"
-               id="SER-001-Pre.config.db"
-               logicalFilePath="server/liquibase/changelog/SER-001-Pre.config.db.changelog.sql">
-        <sqlFile
-                encoding="utf8"
-                path="server/liquibase/changelog/SER-001-Pre.config.db.changelog.sql"
-                splitStatements="true"
-                stripComments="true"
-        />
-    </changeSet>
-
     <include file="renohome/liquibase/db.changelog-master.xml" />
-    <include file="server/liquibase/changelog/SER-002-Initial.garage.setup.changelog.xml" />
+    <include file="server/liquibase/changelog/SER-001-Initial.garage.setup.changelog.xml" />
 </databaseChangeLog>

@@ -121,8 +121,8 @@
 
             <dependency>
                 <groupId>com.renohome</groupId>
-                <artifactId>renohome-contoller</artifactId>
-                <version>${renohome-contoller.version}</version>
+                <artifactId>renohome-controller</artifactId>
+                <version>${renohome-controller.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>com.renohome</groupId>
