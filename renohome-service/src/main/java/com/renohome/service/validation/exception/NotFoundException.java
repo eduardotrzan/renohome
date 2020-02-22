@@ -1,4 +1,4 @@
-package com.renohome.service.validation;
+package com.renohome.service.validation.exception;
 
 public class NotFoundException extends RuntimeException {
 
