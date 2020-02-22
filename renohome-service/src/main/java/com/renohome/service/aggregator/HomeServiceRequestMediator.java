@@ -1,6 +1,7 @@
 package com.renohome.service.aggregator;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -20,6 +21,7 @@ import com.renohome.service.business.HomeServiceRequestService;
 import com.renohome.service.mapper.HomeServiceRequestMapper;
 import com.renohome.service.validation.exception.NotFoundException;
 
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class HomeServiceRequestMediator {
@@ -32,6 +34,8 @@ public class HomeServiceRequestMediator {
 
     @Transactional(propagation = Propagation.MANDATORY)
     public HomeServiceRequestDto create(UUID homeUuid, HomeServiceRequestCreateDto request) {
+        log.info("Creating home service request for homeUuid={} and request={}.",
+                 homeUuid, request);
         HomeServiceRequest entity = this.homeServiceRequestMapper.toNewEntity(request);
 
         ServiceTypeDto requestServiceType = request.getServiceType();
@@ -44,9 +48,12 @@ public class HomeServiceRequestMediator {
 
         HomeServiceRequest savedEntity = this.homeServiceRequestService.create(entity);
 
-        return this.homeServiceRequestMapper
+        HomeServiceRequestDto dto = this.homeServiceRequestMapper
                 .toDto(savedEntity)
                 .orElseThrow(() -> new NotFoundException(HomeServiceRequest.class.getSimpleName()));
+
+        log.info("Created home service request as dto={}.", dto);
+        return dto;
     }
 
     @Transactional(readOnly = true)

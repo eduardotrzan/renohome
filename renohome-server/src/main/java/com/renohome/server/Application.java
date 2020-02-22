@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
 
+import com.renohome.controller.config.RenoHomeControllerConfig;
 import com.renohome.server.config.ApplicationConfig;
 
 @Slf4j
@@ -20,10 +21,8 @@ import com.renohome.server.config.ApplicationConfig;
                                        ApplicationConfig.class
                                })
 @Import({
-//                SwaggerConfig.class,
-
                 // Controller Modules
-//                RenoHomeControllerConfig.class
+                RenoHomeControllerConfig.class
 
         })
 @SpringBootApplication
