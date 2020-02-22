@@ -1,0 +1,10 @@
+server:
+  port: 8484
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/renohome
+    username: renohome
+    password: renohome
+  jpa:
+    show-sql: true

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
+        logicalFilePath="liquibase/changelog/SER-001-Initial.garage.setup.changelog.xml">
+
+    <changeSet author="eduardotrzan" id="SER-001-Initial.garage.setup">
+        <insert tableName="service">
+            <column name="version" value="1" />
+            <column name="type" value="CHANGE_SINK" />
+            <column name="budget" value="400" />
+        </insert>
+
+        <insert tableName="service">
+            <column name="version" value="1" />
+            <column name="type" value="CHANGE_FLOORING" />
+            <column name="budget" value="1200" />
+        </insert>
+
+        <insert tableName="service">
+            <column name="version" value="1" />
+            <column name="type" value="PAINT" />
+            <column name="budget" value="150" />
+        </insert>
+
+
+        <rollback>
+            <delete tableName="subscription">
+                <where>type IN ('CHANGE_SINK', 'CHANGE_FLOORING', 'PAINT')</where>
+            </delete>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
