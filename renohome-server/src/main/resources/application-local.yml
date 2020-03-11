@@ -1,6 +1,10 @@
 server:
   port: 8484
 
+mcp:
+  zipkin:
+    url: http://127.0.0.1:9411/api/v2/spans
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5436/renohome

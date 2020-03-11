@@ -6,7 +6,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.renohome.domain.entity.Home;
@@ -24,7 +23,7 @@ public class HomeMediator {
 
     private final HomeMapper homeMapper;
 
-    @Transactional(propagation = Propagation.MANDATORY)
+    @Transactional
     public HomeDto create(HomeCreateDto request) {
         Home entity = this.homeMapper.toNewEntity(request);
         Home savedEntity = this.homeService.create(entity);

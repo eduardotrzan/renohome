@@ -15,6 +15,7 @@
         <module>renohome-dto</module>
         <module>renohome-domain</module>
         <module>renohome-server</module>
+        <module>renohome-contractor</module>
     </modules>
 
     <parent>
@@ -47,6 +48,11 @@
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <spring-security.version>5.2.1.RELEASE</spring-security.version>
         <spring-context.version>5.2.2.RELEASE</spring-context.version>
+
+        <!-- Traceability and Monitoring -->
+        <spring-cloud.version>2.2.1.RELEASE</spring-cloud.version>
+        <zipkin-brave.version>5.9.5</zipkin-brave.version>
+        <zipkin-sender-okhttp3.version>2.12.1</zipkin-sender-okhttp3.version>
 
         <!-- Libs -->
         <apache-common.version>3.9</apache-common.version>
@@ -419,6 +425,65 @@
                     <exclusion>
                         <groupId>org.javassist</groupId>
                         <artifactId>javassist</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Traceability and Monitoring -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${spring-cloud.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.zipkin.zipkin2</groupId>
+                        <artifactId>zipkin</artifactId>
+                    </exclusion>
+
+                    <exclusion>
+                        <groupId>io.zipkin.reporter2</groupId>
+                        <artifactId>zipkin-reporter</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>io.zipkin.brave</groupId>
+                <artifactId>brave</artifactId>
+                <version>${zipkin-brave.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.zipkin.brave</groupId>
+                <artifactId>brave-instrumentation-http</artifactId>
+                <version>${zipkin-brave.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.zipkin.brave</groupId>
+                <artifactId>brave-context-slf4j</artifactId>
+                <version>${zipkin-brave.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.zipkin.reporter2</groupId>
+                <artifactId>zipkin-sender-okhttp3</artifactId>
+                <version>${zipkin-sender-okhttp3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-sleuth</artifactId>
+                <version>${spring-cloud.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.zipkin.zipkin2</groupId>
+                        <artifactId>zipkin</artifactId>
+                    </exclusion>
+
+                    <exclusion>
+                        <groupId>io.zipkin.reporter2</groupId>
+                        <artifactId>zipkin-reporter</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
