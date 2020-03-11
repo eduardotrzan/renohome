@@ -18,6 +18,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.List;
 
+import com.renohome.generic.domain.entity.AbstractEntity;
+
 @Getter
 @Setter
 @NoArgsConstructor

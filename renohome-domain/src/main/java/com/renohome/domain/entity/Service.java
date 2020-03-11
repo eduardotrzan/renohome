@@ -18,6 +18,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.renohome.domain.entity.enums.ServiceType;
+import com.renohome.generic.domain.entity.AbstractEntity;
 
 @Getter
 @Setter

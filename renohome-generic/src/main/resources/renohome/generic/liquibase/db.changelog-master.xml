@@ -7,11 +7,11 @@
                             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"
 >
     <changeSet author="eduardotrzan"
-               id="RNH-001-Create.renohome.domain"
-               logicalFilePath="renohome/liquibase/changelog/RNH-001-Create.renohome.domain.changelog.sql">
+               id="RNH-GEN-001-Pre.config.db"
+               logicalFilePath="renohome/generic/liquibase/changelog/RNH-GEN-001-Pre.config.db.changelog.sql">
         <sqlFile
                 encoding="utf8"
-                path="renohome/liquibase/changelog/RNH-001-Create.renohome.domain.changelog.sql"
+                path="renohome/generic/liquibase/changelog/RNH-GEN-001-Pre.config.db.changelog.sql"
                 splitStatements="true"
                 stripComments="true"
         />

@@ -79,6 +79,18 @@
         <!-- Required for DB changelog -->
         <dependency>
             <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-domain</artifactId>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>com.renohome</groupId>
             <artifactId>renohome-domain</artifactId>
         </dependency>
 

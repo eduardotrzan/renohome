@@ -1,4 +1,4 @@
-package com.renohome.domain.entity;
+package com.renohome.generic.domain.entity;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+import com.renohome.generic.domain.entity.AbstractEntity;
+
 @Getter
 @Setter
 @NoArgsConstructor

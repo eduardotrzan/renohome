@@ -1,4 +1,4 @@
-package com.renohome.domain.entity;
+package com.renohome.contractor.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,18 +9,16 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.util.List;
 
+import com.renohome.contractor.domain.entity.enums.ContractorServiceType;
 import com.renohome.generic.domain.entity.AbstractEntity;
 
 @Getter
@@ -48,10 +46,7 @@ public class Contractor extends AbstractEntity<Long> {
     @Column(name = "cost", nullable = false, precision = 24, scale = 12)
     private BigDecimal cost;
 
-    @ManyToOne(targetEntity = Service.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "service_id")
-    private Service service;
-
-    @OneToMany(mappedBy = "home", fetch = FetchType.LAZY)
-    private List<HomeServiceRequest> homeServiceRequests;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "service_type", nullable = false, length = 200)
+    private ContractorServiceType serviceType;
 }

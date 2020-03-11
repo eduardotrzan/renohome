@@ -6,6 +6,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
+    <include file="renohome/generic/liquibase/db.changelog-master.xml" />
+    <include file="renohome/contractor/liquibase/db.changelog-master.xml" />
     <include file="renohome/liquibase/db.changelog-master.xml" />
     <include file="server/liquibase/changelog/SER-001-Initial.garage.setup.changelog.xml" />
 </databaseChangeLog>

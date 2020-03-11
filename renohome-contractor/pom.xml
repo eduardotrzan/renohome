@@ -2,28 +2,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>renohome</artifactId>
+        <groupId>com.renohome</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.renohome</groupId>
-    <artifactId>renohome</artifactId>
+    <artifactId>renohome-contractor</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-
     <modules>
-        <module>renohome-controller</module>
-        <module>renohome-service</module>
-        <module>renohome-dto</module>
-        <module>renohome-domain</module>
-        <module>renohome-server</module>
-        <module>renohome-contractor</module>
-        <module>renohome-generic</module>
+        <module>renohome-contractor-controller</module>
+        <module>renohome-contractor-service</module>
+        <module>renohome-contractor-domain</module>
+        <module>renohome-contractor-dto</module>
+        <module>renohome-contractor-server</module>
     </modules>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -82,10 +76,6 @@
         <skip-integration-test>false</skip-integration-test>
 
         <!-- RenoHome -->
-        <renohome-generic.version>1.0-SNAPSHOT</renohome-generic.version>
-        <renohome-contractor-domain.version>1.0-SNAPSHOT</renohome-contractor-domain.version>
-
-
         <renohome-domain.version>1.0-SNAPSHOT</renohome-domain.version>
         <renohome-dto.version>1.0-SNAPSHOT</renohome-dto.version>
         <renohome-service.version>1.0-SNAPSHOT</renohome-service.version>
@@ -110,19 +100,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- RenoHome Systems -->
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-generic</artifactId>
-                <version>${renohome-generic.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-contractor-domain</artifactId>
-                <version>${renohome-contractor-domain.version}</version>
-            </dependency>
-
+            <!-- CarShop Systems -->
             <dependency>
                 <groupId>com.renohome</groupId>
                 <artifactId>renohome-domain</artifactId>
@@ -723,4 +701,6 @@
             </properties>
         </profile>
     </profiles>
+
+
 </project>
