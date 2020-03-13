@@ -16,10 +16,10 @@ import com.renohome.domain.entity.Service;
 import com.renohome.dto.enums.ServiceTypeDto;
 import com.renohome.dto.request.HomeServiceRequestCreateDto;
 import com.renohome.dto.response.HomeServiceRequestDto;
+import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.service.business.HomeService;
 import com.renohome.service.business.HomeServiceRequestService;
 import com.renohome.service.mapper.HomeServiceRequestMapper;
-import com.renohome.service.validation.exception.NotFoundException;
 
 @Slf4j
 @RequiredArgsConstructor

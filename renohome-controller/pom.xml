@@ -14,6 +14,12 @@
     <artifactId>renohome-controller</artifactId>
 
     <dependencies>
+        <!-- RenoHome -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-controller</artifactId>
+        </dependency>
+
         <!--Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

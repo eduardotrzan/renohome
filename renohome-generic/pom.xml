@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>renohome-generic</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>renohome-generic-domain</module>
+        <module>renohome-generic-exceptions</module>
+        <module>renohome-generic-controller</module>
+        <module>renohome-generic-tracking</module>
+        <module>renohome-generic-security</module>
+    </modules>
 
     <dependencies>
         <dependency>

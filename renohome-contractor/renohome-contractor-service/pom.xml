@@ -11,5 +11,22 @@
 
     <artifactId>renohome-contractor-service</artifactId>
 
+    <dependencies>
+        <!-- RenoHome Contractor -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-exceptions</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-dto</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

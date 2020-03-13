@@ -47,47 +47,26 @@
 
         <!-- Traceability and Monitoring -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-security</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>io.zipkin.brave</groupId>
-            <artifactId>brave</artifactId>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-tracking</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>io.zipkin.brave</groupId>
-            <artifactId>brave-context-slf4j</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.zipkin.brave</groupId>
-            <artifactId>brave-instrumentation-http</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.zipkin.reporter2</groupId>
-            <artifactId>zipkin-sender-okhttp3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
-        </dependency>
 
         <!-- Required for DB changelog -->
         <dependency>
             <groupId>com.renohome</groupId>
-            <artifactId>renohome-generic</artifactId>
+            <artifactId>renohome-generic-domain</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.renohome</groupId>
             <artifactId>renohome-contractor-domain</artifactId>
         </dependency>
-
-
 
         <dependency>
             <groupId>com.renohome</groupId>

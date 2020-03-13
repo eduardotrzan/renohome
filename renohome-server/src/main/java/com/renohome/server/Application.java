@@ -13,6 +13,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Import;
 
 import com.renohome.controller.config.RenoHomeControllerConfig;
+import com.renohome.generic.security.config.SpringSecurityConfig;
+import com.renohome.generic.tracking.config.TracingConfig;
 import com.renohome.server.config.ApplicationConfig;
 
 @Slf4j
@@ -22,7 +24,9 @@ import com.renohome.server.config.ApplicationConfig;
                                })
 @Import({
                 // Controller Modules
-                RenoHomeControllerConfig.class
+                RenoHomeControllerConfig.class,
+                SpringSecurityConfig.class,
+                TracingConfig.class,
 
         })
 @SpringBootApplication

@@ -15,7 +15,7 @@
         <!-- Generic -->
         <dependency>
             <groupId>com.renohome</groupId>
-            <artifactId>renohome-generic</artifactId>
+            <artifactId>renohome-generic-domain</artifactId>
         </dependency>
 
         <!-- Testing -->

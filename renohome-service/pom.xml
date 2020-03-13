@@ -16,6 +16,11 @@
         <!-- RenoHome -->
         <dependency>
             <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-exceptions</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
             <artifactId>renohome-domain</artifactId>
         </dependency>
 

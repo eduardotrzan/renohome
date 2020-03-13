@@ -19,6 +19,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.UUID;
 
 import com.renohome.generic.domain.entity.AbstractEntity;
 
@@ -49,9 +50,8 @@ public class HomeServiceRequest extends AbstractEntity<Long> {
     @JoinColumn(name = "service_id", nullable = false)
     private Service service;
 
-    @ManyToOne(targetEntity = Contractor.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "contractor_id")
-    private Contractor contractor;
+    @Column(name = "contractor_uuid")
+    private UUID contractorUuid;
 
     @Column(name = "budget", nullable = false)
     private BigDecimal budget;

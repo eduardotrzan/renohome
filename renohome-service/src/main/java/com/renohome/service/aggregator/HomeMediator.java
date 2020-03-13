@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.renohome.domain.entity.Home;
 import com.renohome.dto.request.HomeCreateDto;
 import com.renohome.dto.response.HomeDto;
+import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.service.business.HomeService;
 import com.renohome.service.mapper.HomeMapper;
-import com.renohome.service.validation.exception.NotFoundException;
 
 @RequiredArgsConstructor
 @Component

@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.renohome.domain.entity.Service;
 import com.renohome.domain.entity.enums.ServiceType;
 import com.renohome.dto.enums.ServiceTypeDto;
+import com.renohome.generic.expcetions.BadRequestException;
+import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.service.business.ServiceService;
-import com.renohome.service.validation.exception.BadRequestException;
-import com.renohome.service.validation.exception.NotFoundException;
 
 @RequiredArgsConstructor
 @Component

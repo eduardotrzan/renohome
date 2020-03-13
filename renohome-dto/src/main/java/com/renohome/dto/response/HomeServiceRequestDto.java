@@ -16,7 +16,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of = { "uuid", "createDate", "updateDate", "scheduleDate", "budget", "home", "service", "contractor" })
+@ToString(of = { "uuid", "createDate", "updateDate", "scheduleDate", "budget", "home", "service" })
 public class HomeServiceRequestDto {
 
     private UUID uuid;
@@ -32,7 +32,5 @@ public class HomeServiceRequestDto {
     private HomeDto home;
 
     private ServiceDto service;
-
-    private ContractorDto contractor;
 
 }

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.renohome.domain.entity.HomeServiceRequest;
 import com.renohome.dto.request.HomeServiceRequestCreateDto;
-import com.renohome.dto.response.ContractorDto;
 import com.renohome.dto.response.HomeDto;
 import com.renohome.dto.response.HomeServiceRequestDto;
 import com.renohome.dto.response.ServiceDto;
@@ -19,8 +18,6 @@ import com.renohome.dto.response.ServiceDto;
 @RequiredArgsConstructor
 @Component
 public class HomeServiceRequestMapper {
-
-    private final ContractorMapper contractorMapper;
 
     private final HomeMapper homeMapper;
 
@@ -43,9 +40,6 @@ public class HomeServiceRequestMapper {
         ServiceDto service = this.serviceMapper.toDto(entity.getService())
                 .orElse(null);
 
-        ContractorDto contractor = this.contractorMapper.toDto(entity.getContractor())
-                .orElse(null);
-
         return HomeServiceRequestDto.builder()
                 .uuid(entity.getUuid())
                 .createDate(entity.getCreateDate())
@@ -54,7 +48,6 @@ public class HomeServiceRequestMapper {
                 .budget(entity.getBudget())
                 .home(home)
                 .service(service)
-                .contractor(contractor)
                 .build();
     }
 

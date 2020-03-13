@@ -22,12 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devskiller.jfairy.Fairy;
 import com.devskiller.jfairy.producer.person.Address;
 import com.devskiller.jfairy.producer.person.Person;
-import com.renohome.domain.entity.Contractor;
 import com.renohome.domain.entity.Home;
 import com.renohome.domain.entity.HomeServiceRequest;
 import com.renohome.domain.entity.Service;
 import com.renohome.domain.entity.enums.ServiceType;
-import com.renohome.domain.repo.ContractorRepository;
 import com.renohome.domain.repo.HomeRepository;
 import com.renohome.domain.repo.HomeServiceRequestRepository;
 import com.renohome.domain.repo.ServiceRepository;
@@ -37,15 +35,11 @@ import com.renohome.domain.repo.ServiceRepository;
 @Component
 public class RenoHomeDatabasePrefillUtils {
 
-    private final ContractorRepository contractorRepository;
-
     private final HomeRepository homeRepository;
 
     private final HomeServiceRequestRepository homeServiceRequestRepository;
 
     private final ServiceRepository serviceRepository;
-
-    private Contractor contractor;
 
     private Home home;
 
@@ -58,8 +52,6 @@ public class RenoHomeDatabasePrefillUtils {
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     public static class DatabasePrefillContext {
 
-        private Contractor contractor;
-
         private Home home;
 
         private HomeServiceRequest homeServiceRequest;
@@ -71,7 +63,6 @@ public class RenoHomeDatabasePrefillUtils {
     public DatabasePrefillContext saveAndGet() {
         doSave();
         DatabasePrefillContext databasePrefillContext = DatabasePrefillContext.builder()
-                .contractor(this.contractor)
                 .home(this.home)
                 .homeServiceRequest(this.homeServiceRequest)
                 .service(this.service)
@@ -87,28 +78,15 @@ public class RenoHomeDatabasePrefillUtils {
     }
 
     private void doSave() {
-        this.saveContractor();
         this.saveHome();
         this.saveService();
         this.saveHomeServiceRequest();
     }
 
     private void flush() {
-        this.contractor = null;
         this.home = null;
         this.homeServiceRequest = null;
         this.service = null;
-    }
-
-    private void saveContractor() {
-        log.info("Saving contractor...");
-        if (this.contractor == null) {
-            log.info("contractor is null, skipping save.");
-            return;
-        }
-
-        this.contractor = this.contractorRepository.save(this.contractor);
-        log.info("Saved contractor={}.", this.contractor);
     }
 
     private void saveHome() {
@@ -133,10 +111,6 @@ public class RenoHomeDatabasePrefillUtils {
 
     private void saveHomeServiceRequest() {
         log.info("Saving homeServiceRequest...");
-        if (this.contractor == null) {
-            log.info("contractor is null, skipping save.");
-            return;
-        }
 
         if (this.home == null) {
             log.info("home is null, skipping save.");
@@ -153,7 +127,6 @@ public class RenoHomeDatabasePrefillUtils {
             return;
         }
 
-        this.homeServiceRequest.setContractor(this.contractor);
         this.homeServiceRequest.setHome(this.home);
         this.homeServiceRequest.setService(this.service);
 
@@ -163,23 +136,8 @@ public class RenoHomeDatabasePrefillUtils {
         this.home.getHomeServiceRequests().add(this.homeServiceRequest);
 
 
-        if (this.contractor.getHomeServiceRequests() == null || this.contractor.getHomeServiceRequests().isEmpty()) {
-            this.contractor.setHomeServiceRequests(new ArrayList<>());
-        }
-        this.contractor.getHomeServiceRequests().add(this.homeServiceRequest);
-
         this.homeServiceRequest = this.homeServiceRequestRepository.save(this.homeServiceRequest);
         log.info("Saved homeServiceRequest={}.", this.homeServiceRequest);
-    }
-
-    public RenoHomeDatabasePrefillUtils withRandomContractor() {
-        Person person = Fairy.create().person();
-        this.contractor = Contractor.builder()
-                .name(person.getFullName())
-                .phone(person.getPhone())
-                .cost(this.randomDecimalBetween(400, 2000))
-                .build();
-        return this;
     }
 
     public RenoHomeDatabasePrefillUtils withRandomHome() {

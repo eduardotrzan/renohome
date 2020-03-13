@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.renohome.dto.request.HomeCreateDto;
 import com.renohome.dto.response.HomeDto;
+import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.service.aggregator.HomeMediator;
-import com.renohome.service.validation.exception.NotFoundException;
 
 @RestController
 @RequestMapping({ "/v1/homes" })

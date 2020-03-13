@@ -11,5 +11,50 @@
 
     <artifactId>renohome-contractor-controller</artifactId>
 
+    <dependencies>
+        <!-- RenoHome -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-controller</artifactId>
+        </dependency>
 
+        <!--Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+
+        <!-- Lib -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
+
+        <!-- RenoHome Contractor Modules -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-dto</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-service</artifactId>
+        </dependency>
+    </dependencies>
 </project>
