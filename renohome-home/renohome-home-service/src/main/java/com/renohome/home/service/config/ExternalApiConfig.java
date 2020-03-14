@@ -1,4 +1,4 @@
-package com.renohome.home.server.config;
+package com.renohome.home.service.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,13 +13,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(onlyExplicitlyIncluded = true)
-@ConfigurationProperties(prefix = "config")
-public class ApplicationConfig {
+@ConfigurationProperties(prefix = "external.api")
+public class ExternalApiConfig {
 
-    @ToString.Include
-    private String serviceName;
-
-    @ToString.Include
-    private String timeZone;
-
+    private String contractorUrl;
 }

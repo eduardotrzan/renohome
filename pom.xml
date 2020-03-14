@@ -10,11 +10,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>renohome-controller</module>
-        <module>renohome-service</module>
-        <module>renohome-dto</module>
-        <module>renohome-domain</module>
-        <module>renohome-server</module>
         <module>renohome-contractor</module>
         <module>renohome-generic</module>
         <module>renohome-home</module>

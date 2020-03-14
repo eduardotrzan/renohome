@@ -2,19 +2,21 @@ package com.renohome.contractor.service.aggregator;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.renohome.contractor.domain.entity.Contractor;
 import com.renohome.contractor.domain.entity.enums.ContractorServiceType;
+import com.renohome.contractor.dto.enums.ContractorServiceTypeDto;
 import com.renohome.contractor.dto.request.ContractorCreateDto;
 import com.renohome.contractor.dto.response.ContractorDto;
 import com.renohome.contractor.service.business.ContractorService;
 import com.renohome.contractor.service.mapper.ContractorMapper;
+import com.renohome.generic.expcetions.BadRequestException;
 import com.renohome.generic.expcetions.NotFoundException;
 
 
@@ -26,13 +28,11 @@ public class ContractorMediator {
 
     private final ContractorMapper contractorMapper;
 
-    @Transactional(propagation = Propagation.MANDATORY)
+    @Transactional
     public ContractorDto create(ContractorCreateDto request) {
         Contractor entity = this.contractorMapper.toNewEntity(request);
 
-        ContractorServiceType serviceType = request.getServiceType() == null
-                ? null
-                : ContractorServiceType.valueOf(request.getServiceType().name());
+        ContractorServiceType serviceType = this.convertServiceType(request.getServiceType());
         entity.setServiceType(serviceType);
 
         Contractor savedEntity = this.contractorService.create(entity);
@@ -47,5 +47,19 @@ public class ContractorMediator {
         return this.contractorService
                 .findByUuid(uuid)
                 .flatMap(contractorMapper::toDto);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ContractorDto> listByServiceType(ContractorServiceTypeDto serviceTypeDto) {
+        ContractorServiceType serviceType = this.convertServiceType(serviceTypeDto);
+        List<Contractor> contractors = this.contractorService.listByServiceType(serviceType);
+        return contractorMapper.toDtos(contractors);
+    }
+
+    private ContractorServiceType convertServiceType(ContractorServiceTypeDto serviceTypeDto) {
+        return Optional.ofNullable(serviceTypeDto)
+                .map(Enum::name)
+                .map(ContractorServiceType::valueOf)
+                .orElseThrow(() -> new BadRequestException(ContractorServiceTypeDto.class.getSimpleName()));
     }
 }

@@ -4,6 +4,7 @@ config:
 
 mcp:
   zipkin:
+    serviceName: renohome-home
     url: ${mcp.zipkin}
 
 spring:

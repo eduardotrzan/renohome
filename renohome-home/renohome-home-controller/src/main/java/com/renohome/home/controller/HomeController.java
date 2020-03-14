@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.home.dto.request.HomeCreateDto;
 import com.renohome.home.dto.response.HomeDto;
-import com.renohome.home.service.aggregator.HomeMediator;
+import com.renohome.home.service.aggregator.transactional.HomeTransactionalMediator;
 
 @RestController
 @RequestMapping({ "/v1/homes" })
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final HomeMediator homeMediator;
+    private final HomeTransactionalMediator homeMediator;
 
     @PermitAll
     @PostMapping(consumes = "application/json")

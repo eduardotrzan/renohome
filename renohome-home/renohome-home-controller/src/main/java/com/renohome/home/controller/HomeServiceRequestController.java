@@ -18,27 +18,27 @@ import org.springframework.web.bind.annotation.RestController;
 import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.home.dto.request.HomeServiceRequestCreateDto;
 import com.renohome.home.dto.response.HomeServiceRequestDto;
-import com.renohome.home.service.aggregator.HomeServiceRequestMediator;
+import com.renohome.home.service.aggregator.segregational.HomeServiceRequestSegregationalMediator;
 
 @RestController
 @RequestMapping({ "/v1" })
 @RequiredArgsConstructor
 public class HomeServiceRequestController {
 
-    private final HomeServiceRequestMediator homeServiceRequestMediator;
+    private final HomeServiceRequestSegregationalMediator homeServiceRequestSegregationalMediator;
 
     @PermitAll
     @PostMapping(value = "/homes/{homeUuid}/homeServiceRequests", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public HomeServiceRequestDto create(@PathVariable(value = "homeUuid") UUID homeUuid,
                                         @Validated @RequestBody HomeServiceRequestCreateDto request) {
-        return this.homeServiceRequestMediator.create(homeUuid, request);
+        return this.homeServiceRequestSegregationalMediator.create(homeUuid, request);
     }
 
     @PermitAll
     @GetMapping(value = "/homeServiceRequests/{homeServiceRequestUuid}", produces = "application/json")
     public HomeServiceRequestDto findComment(@PathVariable(value = "homeServiceRequestUuid") UUID homeServiceRequestUuid) {
-        return this.homeServiceRequestMediator.findByUuid(homeServiceRequestUuid)
+        return this.homeServiceRequestSegregationalMediator.findByUuid(homeServiceRequestUuid)
                 .orElseThrow(() -> new NotFoundException(HomeServiceRequestDto.class.getSimpleName()));
     }
 

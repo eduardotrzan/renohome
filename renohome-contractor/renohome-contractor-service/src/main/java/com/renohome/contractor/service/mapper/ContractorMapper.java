@@ -1,7 +1,10 @@
 package com.renohome.contractor.service.mapper;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,6 +16,15 @@ import com.renohome.contractor.dto.response.ContractorDto;
 
 @Component
 public class ContractorMapper {
+
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<ContractorDto> toDtos(List<Contractor> entities) {
+        return Objects.requireNonNullElse(entities, Collections.<Contractor>emptyList())
+                .stream()
+                .map(this::toDto)
+                .flatMap(Optional::stream)
+                .collect(Collectors.toList());
+    }
 
     @Transactional(propagation = Propagation.MANDATORY)
     public Optional<ContractorDto> toDto(Contractor entity) {

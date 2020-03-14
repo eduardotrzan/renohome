@@ -4,6 +4,7 @@ import brave.Tracing;
 import brave.http.HttpTracing;
 import brave.propagation.B3Propagation;
 import brave.propagation.ExtraFieldPropagation;
+import brave.propagation.Propagation;
 import brave.propagation.ThreadLocalCurrentTraceContext;
 import brave.sampler.Sampler;
 import zipkin2.Span;
@@ -30,13 +31,14 @@ public class TracingConfig {
     }
 
     @Bean
-    Tracing tracing(Reporter<Span> spanReporter) {
+    Tracing tracing(@Value("${mcp.zipkin.serviceName}") String serviceName, Reporter<Span> spanReporter) {
+        Propagation.Factory propagationFactory = ExtraFieldPropagation
+                .newFactory(B3Propagation.FACTORY, "client-id");
         return Tracing
                 .newBuilder()
                 .sampler(Sampler.ALWAYS_SAMPLE)
-                .localServiceName("serviceName")
-                .propagationFactory(ExtraFieldPropagation
-                                            .newFactory(B3Propagation.FACTORY, "client-id"))
+                .localServiceName(serviceName)
+                .propagationFactory(propagationFactory)
                 .currentTraceContext(ThreadLocalCurrentTraceContext.create())
                 .spanReporter(spanReporter)
                 .build();

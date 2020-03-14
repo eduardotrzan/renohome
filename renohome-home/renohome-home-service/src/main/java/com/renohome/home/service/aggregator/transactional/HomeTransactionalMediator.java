@@ -1,4 +1,4 @@
-package com.renohome.home.service.aggregator;
+package com.renohome.home.service.aggregator.transactional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,12 +12,12 @@ import com.renohome.generic.expcetions.NotFoundException;
 import com.renohome.home.domain.entity.Home;
 import com.renohome.home.dto.request.HomeCreateDto;
 import com.renohome.home.dto.response.HomeDto;
-import com.renohome.home.service.business.HomeService;
+import com.renohome.home.service.business.internal.HomeService;
 import com.renohome.home.service.mapper.HomeMapper;
 
 @RequiredArgsConstructor
 @Component
-public class HomeMediator {
+public class HomeTransactionalMediator {
 
     private final HomeService homeService;
 

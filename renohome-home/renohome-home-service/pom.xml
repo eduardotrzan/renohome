@@ -27,5 +27,11 @@
             <groupId>com.renohome</groupId>
             <artifactId>renohome-home-dto</artifactId>
         </dependency>
+
+        <!-- Spring Web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
     </dependencies>
 </project>

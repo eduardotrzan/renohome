@@ -1,4 +1,4 @@
-package com.renohome.home.service.business;
+package com.renohome.home.service.business.internal;
 
 import lombok.RequiredArgsConstructor;
 

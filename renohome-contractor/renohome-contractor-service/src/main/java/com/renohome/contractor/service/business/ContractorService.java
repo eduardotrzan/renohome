@@ -2,6 +2,7 @@ package com.renohome.contractor.service.business;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.renohome.contractor.domain.entity.Contractor;
+import com.renohome.contractor.domain.entity.enums.ContractorServiceType;
 import com.renohome.contractor.domain.repo.ContractorRepository;
 
 @RequiredArgsConstructor
@@ -26,5 +28,10 @@ public class ContractorService {
     @Transactional(readOnly = true, propagation = Propagation.MANDATORY)
     public Optional<Contractor> findByUuid(UUID uuid) {
         return this.contractorRepository.findByUuid(uuid);
+    }
+
+    @Transactional(readOnly = true, propagation = Propagation.MANDATORY)
+    public List<Contractor> listByServiceType(ContractorServiceType serviceType) {
+        return this.contractorRepository.findAllByServiceType(serviceType);
     }
 }
