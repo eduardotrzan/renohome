@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "44a62a39-bdd1-4f0f-87f5-cb9837bd53ed",
+		"name": "RenoHome",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Contractor",
+			"item": [
+				{
+					"name": "Valid Call",
+					"item": [
+						{
+							"name": "Create Contractor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "abb654d9-7221-4281-9297-6dcc04c1307c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"contractorUuid\", jsonData.uuid);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Mario Contractor\",\n\t\"phone\": \"444-123-4567\",\n\t\"cost\": \"400\",\n\t\"serviceType\": \"CHANGE_SINK\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host-contractor}}/renohome/v1/contractors",
+									"host": [
+										"{{host-contractor}}"
+									],
+									"path": [
+										"renohome",
+										"v1",
+										"contractors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Contractor by ServiceType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "abb654d9-7221-4281-9297-6dcc04c1307c",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Mario Contractor\",\n\t\"phone\": \"444-123-4567\",\n\t\"cost\": \"400\",\n\t\"serviceType\": \"CHANGE_SINK\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host-contractor}}/renohome/v1/contractors?serviceType=CHANGE_SINK",
+									"host": [
+										"{{host-contractor}}"
+									],
+									"path": [
+										"renohome",
+										"v1",
+										"contractors"
+									],
+									"query": [
+										{
+											"key": "serviceType",
+											"value": "CHANGE_SINK"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invalid Call",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Valid Call",
+					"item": [
+						{
+							"name": "Create Home",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "abb654d9-7221-4281-9297-6dcc04c1307c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"homeUuid\", jsonData.uuid);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"owner\": \"Eduardo\",\n\t\"address\": \"Montreal, QC, Canada\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host-home}}/renohome/v1/homes",
+									"host": [
+										"{{host-home}}"
+									],
+									"path": [
+										"renohome",
+										"v1",
+										"homes"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invalid Call",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "HomeServiceRequest",
+			"item": [
+				{
+					"name": "Valid Call",
+					"item": [
+						{
+							"name": "Create Home Service Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "abb654d9-7221-4281-9297-6dcc04c1307c",
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"homeServiceRequestUuid\", jsonData.uuid);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "e48b887a-52dc-442a-b31d-84e9ea5eb706",
+										"exec": [
+											"var scheduleDate = new Date();",
+											"scheduleDate.setDate(scheduleDate.getDate() + 1); // days",
+											"postman.setEnvironmentVariable(\"scheduleDate\", scheduleDate.toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"serviceType\": \"CHANGE_SINK\",\n\t\"scheduleDate\": \"{{scheduleDate}}\",\n\t\"budget\": 1000.58\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host-home}}/renohome/v1/homes/{{homeUuid}}/homeServiceRequests",
+									"host": [
+										"{{host-home}}"
+									],
+									"path": [
+										"renohome",
+										"v1",
+										"homes",
+										"{{homeUuid}}",
+										"homeServiceRequests"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Invalid Call",
+					"item": [],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

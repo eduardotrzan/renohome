@@ -3,6 +3,11 @@
 This is a RenoHome Micro-Service Restful Service for renovating or repair your home.
 The main reason for this repository is to use Zipking for traceability and monitoring for 2 micro-services.
 
+To run Zipkin locally use its docker image:
+```bash
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+
 ![Zipkin Tracing](doc/ZipkinTracing.png)
 
 ## 1. For Running Application Locally ONLY
