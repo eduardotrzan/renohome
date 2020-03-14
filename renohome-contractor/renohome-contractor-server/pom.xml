@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>renohome-contractor</artifactId>
+        <groupId>com.renohome</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>renohome-contractor-server</artifactId>
+
+    <dependencies>
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+        </dependency>
+
+        <!-- Traceability and Monitoring -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-tracking</artifactId>
+        </dependency>
+
+
+        <!-- Required for DB changelog -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-generic-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-domain</artifactId>
+        </dependency>
+
+        <!-- Controller -->
+        <dependency>
+            <groupId>com.renohome</groupId>
+            <artifactId>renohome-contractor-controller</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.renohome.contractor.server.Application</mainClass>
+                    <jvmArguments>-Xdebug
+                        -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5113
+                        -Dspring.profiles.active=${profileName}
+                        -Duser.timezone=America/Montreal
+                    </jvmArguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
