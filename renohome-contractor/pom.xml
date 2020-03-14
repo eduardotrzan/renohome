@@ -75,12 +75,11 @@
         <skip-unit-test>false</skip-unit-test>
         <skip-integration-test>false</skip-integration-test>
 
-        <!-- RenoHome -->
-        <renohome-domain.version>1.0-SNAPSHOT</renohome-domain.version>
-        <renohome-dto.version>1.0-SNAPSHOT</renohome-dto.version>
-        <renohome-service.version>1.0-SNAPSHOT</renohome-service.version>
-        <renohome-controller.version>1.0-SNAPSHOT</renohome-controller.version>
-        <renohome-server.version>1.0-SNAPSHOT</renohome-server.version>
+        <!-- RenoHome Systems - Contractor -->
+        <renohome-contractor-domain.version>1.0-SNAPSHOT</renohome-contractor-domain.version>
+        <renohome-contractor-dto.version>1.0-SNAPSHOT</renohome-contractor-dto.version>
+        <renohome-contractor-service.version>1.0-SNAPSHOT</renohome-contractor-service.version>
+        <renohome-contractor-controller.version>1.0-SNAPSHOT</renohome-contractor-controller.version>
     </properties>
 
     <dependencies>
@@ -100,48 +99,37 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- CarShop Systems -->
+            <!-- RenoHome Systems - Contractor -->
             <dependency>
                 <groupId>com.renohome</groupId>
-                <artifactId>renohome-domain</artifactId>
-                <version>${renohome-domain.version}</version>
+                <artifactId>renohome-contractor-domain</artifactId>
+                <version>${renohome-contractor-domain.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.renohome</groupId>
-                <artifactId>renohome-dto</artifactId>
-                <version>${renohome-dto.version}</version>
+                <artifactId>renohome-contractor-dto</artifactId>
+                <version>${renohome-contractor-dto.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.renohome</groupId>
-                <artifactId>renohome-service</artifactId>
-                <version>${renohome-service.version}</version>
+                <artifactId>renohome-contractor-service</artifactId>
+                <version>${renohome-contractor-service.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>com.renohome</groupId>
-                        <artifactId>renohome-domain</artifactId>
+                        <artifactId>renohome-contractor-domain</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
 
             <dependency>
                 <groupId>com.renohome</groupId>
-                <artifactId>renohome-controller</artifactId>
-                <version>${renohome-controller.version}</version>
+                <artifactId>renohome-contractor-controller</artifactId>
+                <version>${renohome-contractor-controller.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-server</artifactId>
-                <version>${renohome-server.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.renohome</groupId>
-                        <artifactId>renohome-contoller</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
 
             <!-- Spring Boot -->
             <dependency>
@@ -701,6 +689,4 @@
             </properties>
         </profile>
     </profiles>
-
-
 </project>
