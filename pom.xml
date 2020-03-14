@@ -88,12 +88,6 @@
         <renohome-generic-controller.version>1.0-SNAPSHOT</renohome-generic-controller.version>
         <renohome-generic-security.version>1.0-SNAPSHOT</renohome-generic-security.version>
         <renohome-generic-tracking.version>1.0-SNAPSHOT</renohome-generic-tracking.version>
-
-        <renohome-domain.version>1.0-SNAPSHOT</renohome-domain.version>
-        <renohome-dto.version>1.0-SNAPSHOT</renohome-dto.version>
-        <renohome-service.version>1.0-SNAPSHOT</renohome-service.version>
-        <renohome-controller.version>1.0-SNAPSHOT</renohome-controller.version>
-        <renohome-server.version>1.0-SNAPSHOT</renohome-server.version>
     </properties>
 
     <dependencies>
@@ -144,49 +138,6 @@
                 <version>${renohome-generic-security.version}</version>
             </dependency>
 
-
-
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-domain</artifactId>
-                <version>${renohome-domain.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-dto</artifactId>
-                <version>${renohome-dto.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-service</artifactId>
-                <version>${renohome-service.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.renohome</groupId>
-                        <artifactId>renohome-domain</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-controller</artifactId>
-                <version>${renohome-controller.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.renohome</groupId>
-                <artifactId>renohome-server</artifactId>
-                <version>${renohome-server.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>com.renohome</groupId>
-                        <artifactId>renohome-contoller</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
 
             <!-- Spring Boot -->
             <dependency>
