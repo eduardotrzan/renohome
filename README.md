@@ -1,6 +1,9 @@
 # RenoHome
 
-This is a RenoHome Restful Service for renovating or repair your home.
+This is a RenoHome Micro-Service Restful Service for renovating or repair your home.
+The main reason for this repository is to use Zipking for traceability and monitoring for 2 micro-services.
+
+![Zipkin Tracing](doc/ZipkinTracing.png)
 
 ## 1. For Running Application Locally ONLY
 
