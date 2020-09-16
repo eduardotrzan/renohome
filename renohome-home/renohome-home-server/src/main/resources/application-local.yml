@@ -5,14 +5,12 @@ external:
   api:
     contractorUrl: http://127.0.0.1:8485/renohome
 
-mcp:
-  zipkin:
-    url: http://127.0.0.1:9411/api/v2/spans
-
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5436/renohome
-    username: renohome
-    password: renohome
+    url: jdbc:postgresql://localhost:5435/renohomehome
+    username: renohomehome
+    password: renohomehome
   jpa:
     show-sql: true
+  zipkin:
+    base-url: http://127.0.0.1:9411

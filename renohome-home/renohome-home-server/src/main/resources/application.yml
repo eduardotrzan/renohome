@@ -2,11 +2,6 @@ config:
   serviceName: renohome-home
   timeZone: America/Montreal
 
-mcp:
-  zipkin:
-    serviceName: renohome-home
-    url: ${mcp.zipkin}
-
 spring:
   batch:
     job:
@@ -34,6 +29,10 @@ spring:
       max-idle: 10
   liquibase:
     change-log: classpath:server/liquibase/db.changelog-master.xml
+  application:
+    name: renohome-home
+  zipkin:
+    base-url: ${mcp.zipkin}
 
 server:
   port: ${serverPort}
@@ -46,8 +45,13 @@ server:
 
 logging:
   level:
+    org:
+      springframework:
+        cloud:
+          sleuth: DEBUG
     mcp:
       cloudtrace: INFO
     root: INFO
     # Hides HHH000424: Disabling contextual LOB creation as createClob() method threw error
     org.hibernate.engine.jdbc.env.internal.LobCreatorBuilderImpl: WARN
+  config: classpath:logback.xml

@@ -1,6 +1,7 @@
 package com.renohome.contractor.service.aggregator;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +20,7 @@ import com.renohome.contractor.service.mapper.ContractorMapper;
 import com.renohome.generic.expcetions.BadRequestException;
 import com.renohome.generic.expcetions.NotFoundException;
 
-
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class ContractorMediator {
@@ -30,6 +31,7 @@ public class ContractorMediator {
 
     @Transactional
     public ContractorDto create(ContractorCreateDto request) {
+        log.info("Create contractor request={}", request);
         Contractor entity = this.contractorMapper.toNewEntity(request);
 
         ContractorServiceType serviceType = this.convertServiceType(request.getServiceType());
@@ -44,6 +46,7 @@ public class ContractorMediator {
 
     @Transactional(readOnly = true)
     public Optional<ContractorDto> findByUuid(UUID uuid) {
+        log.info("Find contractor uuid={}", uuid);
         return this.contractorService
                 .findByUuid(uuid)
                 .flatMap(contractorMapper::toDto);
@@ -51,6 +54,7 @@ public class ContractorMediator {
 
     @Transactional(readOnly = true)
     public List<ContractorDto> listByServiceType(ContractorServiceTypeDto serviceTypeDto) {
+        log.info("List contractor by serviceTypeDto={}", serviceTypeDto);
         ContractorServiceType serviceType = this.convertServiceType(serviceTypeDto);
         List<Contractor> contractors = this.contractorService.listByServiceType(serviceType);
         return contractorMapper.toDtos(contractors);
